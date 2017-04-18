@@ -1,0 +1,355 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="https://github.com/nodegit/promisify-node#readme">promisify-node (v0.4.0)</a>
+</h1>
+<h4>Wrap Node-callback functions to return Promises.</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.promisify-node">module promisify-node</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.promisify-node.promisify-node">
+            function <span class="apidocSignatureSpan"></span>promisify-node
+            <span class="apidocSignatureSpan">(name, test, noMutate)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.promisify-node.args">
+            function <span class="apidocSignatureSpan">promisify-node.</span>args
+            <span class="apidocSignatureSpan">(func)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.promisify-node.cloneFunction">
+            function <span class="apidocSignatureSpan">promisify-node.</span>cloneFunction
+            <span class="apidocSignatureSpan">(func)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.promisify-node.toString">
+            function <span class="apidocSignatureSpan">promisify-node.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">promisify-node.</span>callbacks</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.promisify-node.args">module promisify-node.args</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.promisify-node.args.args">
+            function <span class="apidocSignatureSpan">promisify-node.</span>args
+            <span class="apidocSignatureSpan">(func)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.promisify-node.cloneFunction">module promisify-node.cloneFunction</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.promisify-node.cloneFunction.cloneFunction">
+            function <span class="apidocSignatureSpan">promisify-node.</span>cloneFunction
+            <span class="apidocSignatureSpan">(func)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.promisify-node.toString">module promisify-node.toString</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.promisify-node.toString.toString">
+            function <span class="apidocSignatureSpan">promisify-node.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.promisify-node" id="apidoc.module.promisify-node">module promisify-node</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.promisify-node.promisify-node" id="apidoc.element.promisify-node.promisify-node">
+        function <span class="apidocSignatureSpan"></span>promisify-node
+        <span class="apidocSignatureSpan">(name, test, noMutate)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">promisify-node = function (name, test, noMutate) {
+  var exports = name;
+
+  // If the name argument is a String, will need to resovle using the built in
+  // Node require function.
+  if (typeof name === "string") {
+    exports = require(name);
+    // Unless explicitly overridden, don't mutate when requiring modules.
+    noMutate = !(noMutate === false);
+  }
+
+  // Iterate over all properties and find asynchronous functions to convert to
+  // promises.
+  return processExports(exports, test, [], undefined, noMutate);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.promisify-node.args" id="apidoc.element.promisify-node.args">
+        function <span class="apidocSignatureSpan">promisify-node.</span>args
+        <span class="apidocSignatureSpan">(func)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">args = function (func) {
+  // First match everything inside the function argument parens.
+  var args = func.toString().match(/function\s.*?\(([^)]*)\)/)[1];
+
+  // Split the arguments string into an array comma delimited.
+  return args.split(", ").map(function(arg) {
+    // Ensure no inline comments are parsed and trim the whitespace.
+    return arg.replace(/\/\*.*\*\//, "").trim();
+  }).filter(function(arg) {
+    // Ensure no undefineds are added.
+    return arg;
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.promisify-node.cloneFunction" id="apidoc.element.promisify-node.cloneFunction">
+        function <span class="apidocSignatureSpan">promisify-node.</span>cloneFunction
+        <span class="apidocSignatureSpan">(func)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function cloneFn(func) {
+    var temp;
+    // Check for the memoized value on the function in-case we get called to wrap the same function
+    // (or already wrapped function) again.
+    return func.__cloneFn || (temp = function() {
+      return func.apply(this, arguments);
+    }) &amp;&amp;
+    // Assign __proto__ as a quick way to copy function properties.
+    (temp.__proto__ = func) &amp;&amp;
+    // Lastly, set a cache var on the original and clone, and return the result.
+    (func.__cloneFn = temp.__cloneFn = temp);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.promisify-node.toString" id="apidoc.element.promisify-node.toString">
+        function <span class="apidocSignatureSpan">promisify-node.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function () {
+    return text;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+* Get the argument names from a given function.
+*
+* @param {Function} func - The function to parse.
+* @returns {Array} arg - List of arguments in the function.
+*/
+module.exports = function(func) {
+ // First match everything inside the function argument parens.
+ var args = func.<span class="apidocCodeKeywordSpan">toString</span>().match(/function\s.*?\(([^)]*)\)/)[1];
+
+ // Split the arguments string into an array comma delimited.
+ return args.split(", ").map(function(arg) {
+   // Ensure no inline comments are parsed and trim the whitespace.
+   return arg.replace(/\/\*.*\*\//, "").trim();
+ }).filter(function(arg) {
+   // Ensure no undefineds are added.
+...</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.promisify-node.args" id="apidoc.module.promisify-node.args">module promisify-node.args</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.promisify-node.args.args" id="apidoc.element.promisify-node.args.args">
+        function <span class="apidocSignatureSpan">promisify-node.</span>args
+        <span class="apidocSignatureSpan">(func)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">args = function (func) {
+  // First match everything inside the function argument parens.
+  var args = func.toString().match(/function\s.*?\(([^)]*)\)/)[1];
+
+  // Split the arguments string into an array comma delimited.
+  return args.split(", ").map(function(arg) {
+    // Ensure no inline comments are parsed and trim the whitespace.
+    return arg.replace(/\/\*.*\*\//, "").trim();
+  }).filter(function(arg) {
+    // Ensure no undefineds are added.
+    return arg;
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.promisify-node.cloneFunction" id="apidoc.module.promisify-node.cloneFunction">module promisify-node.cloneFunction</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.promisify-node.cloneFunction.cloneFunction" id="apidoc.element.promisify-node.cloneFunction.cloneFunction">
+        function <span class="apidocSignatureSpan">promisify-node.</span>cloneFunction
+        <span class="apidocSignatureSpan">(func)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function cloneFn(func) {
+    var temp;
+    // Check for the memoized value on the function in-case we get called to wrap the same function
+    // (or already wrapped function) again.
+    return func.__cloneFn || (temp = function() {
+      return func.apply(this, arguments);
+    }) &amp;&amp;
+    // Assign __proto__ as a quick way to copy function properties.
+    (temp.__proto__ = func) &amp;&amp;
+    // Lastly, set a cache var on the original and clone, and return the result.
+    (func.__cloneFn = temp.__cloneFn = temp);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.promisify-node.toString" id="apidoc.module.promisify-node.toString">module promisify-node.toString</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.promisify-node.toString.toString" id="apidoc.element.promisify-node.toString.toString">
+        function <span class="apidocSignatureSpan">promisify-node.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function toString() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+* Get the argument names from a given function.
+*
+* @param {Function} func - The function to parse.
+* @returns {Array} arg - List of arguments in the function.
+*/
+module.exports = function(func) {
+ // First match everything inside the function argument parens.
+ var args = func.<span class="apidocCodeKeywordSpan">toString</span>().match(/function\s.*?\(([^)]*)\)/)[1];
+
+ // Split the arguments string into an array comma delimited.
+ return args.split(", ").map(function(arg) {
+   // Ensure no inline comments are parsed and trim the whitespace.
+   return arg.replace(/\/\*.*\*\//, "").trim();
+ }).filter(function(arg) {
+   // Ensure no undefineds are added.
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
